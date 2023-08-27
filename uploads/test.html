@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form enctype="multipart/form-data">
+  <input type="file" name="image">
+  <input type="text" name="name">
+  <input type="number" step="0.01" name="price">
+  <button>Submit</button>
+</form>
+
+<script>
+    const form = document.querySelector('form')
+    const input = document.querySelector('input[type="file"]')
+    const name_input = document.querySelector('input[type="text"]')
+    const price_input = document.querySelector('input[type="number"]')
+
+
+    form.onsubmit = (e) => {
+	    e.preventDefault()
+        const name = name_input.value
+        const price = price_input.value
+
+        const data = {}
+
+        const reader = new FileReader();
+        reader.readAsDataURL(input.files[0]);
+
+        reader.onload = function () {
+            data.image = reader.result;
+            data.name = name;
+            data.price = price;
+
+            fetch('http://localhost:4444/api/nfts', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then(() => {
+                form.reset()
+            })
+        };
+    }
+</script>
+</body>
+</html>
