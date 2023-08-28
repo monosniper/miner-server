@@ -21,8 +21,12 @@ const model = User.init({
 	defaultValue: "{}"
     },
     balance_nft: {
-	type: DataTypes.INTEGER,
+	type: DataTypes.DOUBLE,
 	defaultValue: 0,
+    },
+    premium: {
+	type: DataTypes.BOOLEAN,
+	defaultValue: false,
     },
     createdAt: { type: DATE, field: 'created_at' },
     updatedAt: { type: DATE, field: 'updated_at' },
