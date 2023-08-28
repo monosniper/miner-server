@@ -27,6 +27,7 @@ class UserService {
 	    where: { id },
 	    fields: [
 		'balance',
+		'balance_nft',
 	    ]
 	});
     }
