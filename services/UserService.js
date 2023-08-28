@@ -20,7 +20,7 @@ class UserService {
     async update(id, data) {
 	if (data.nfts) {
 	    const user = await User.findOne({ where: { id } })
-	    await user.setNfts(data.nfts)
+	    await user.addNfts(data.nfts)
 	}
 
 	return await User.update(data, {
