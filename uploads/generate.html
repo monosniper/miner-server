@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generator</title>
+</head>
+<body>
+<form>
+    <label for="miner">Miner</label>
+
+  <input type="radio" id="miner" name="type" value="miner">
+    <label for="nft">NFT</label>
+    <input type="radio" id="nft" name="type" value="nft">
+  <button>Submit</button>
+</form>
+
+<div id="key"></div>
+
+
+<script>
+    function KeyGenerate() {
+        const passAt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+        const passArray = Array.from({length: 29})
+
+        return passArray.map(function(_, index) {
+            return index % 6 == 5 ? '-' : passAt.charAt(Math.random() * passAt.length).charAt('-')
+        }).join('')
+    }
+
+  const form = document.querySelector('form')
+
+  form.onsubmit = (e) => {
+    e.preventDefault()
+    const type = document.querySelector('input[name="type"]:checked').value
+      const key = KeyGenerate()
+
+      document.querySelector('#key').innerHTML = key
+
+    fetch('http://130.0.233.208:4444/api/users', {
+      method: 'POST',
+      body: JSON.stringify({
+	    type,
+        key
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then(() => {
+      form.reset()
+    })
+  }
+</script>
+</body>
+</html>
