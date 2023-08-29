@@ -14,11 +14,13 @@ class NftController {
 
     async create(req, res, next) {
         try {
-            const nft = await NftService.create(req.body);
+            const data = req.body
 
-            if(req.body.image) {
-                await UploadService.save(req.body.image, 'nfts', nft.id)
-            }
+            const nft = await NftService.create(data);
+
+            await UploadService.save(data.image, 'nfts', nft.id)
+            nft.image = nft.id+'.webp'
+            await nft.save()
 
             return res.json('ok');
         } catch (e) {

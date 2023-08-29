@@ -15,6 +15,9 @@ const model = Nft.init({
     price: {
 	type: DataTypes.DOUBLE,
     },
+    image: {
+	type: DataTypes.STRING(255),
+    },
     createdAt: { type: DATE, field: 'created_at' },
     updatedAt: { type: DATE, field: 'updated_at' },
 }, {
