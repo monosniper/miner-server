@@ -28,6 +28,10 @@ const model = User.init({
 	type: DataTypes.BOOLEAN,
 	defaultValue: false,
     },
+    isFirstStart: {
+	type: DataTypes.BOOLEAN,
+	defaultValue: true,
+    },
     createdAt: { type: DATE, field: 'created_at' },
     updatedAt: { type: DATE, field: 'updated_at' },
 }, {

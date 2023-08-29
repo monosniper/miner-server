@@ -28,6 +28,7 @@ class UserService {
 	    fields: [
 		'balance',
 		'balance_nft',
+		'isFirstStart',
 	    ]
 	});
     }
