@@ -32,6 +32,9 @@ const model = User.init({
 	type: DataTypes.BOOLEAN,
 	defaultValue: true,
     },
+    from_name: {
+	type: DataTypes.STRING(255),
+    },
     createdAt: { type: DATE, field: 'created_at' },
     updatedAt: { type: DATE, field: 'updated_at' },
 }, {

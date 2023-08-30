@@ -13,6 +13,7 @@ class UserService {
 	    fields: [
 		'key',
 		'type',
+		'from_name',
 	    ]
 	});
     }
