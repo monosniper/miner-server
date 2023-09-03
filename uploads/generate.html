@@ -52,6 +52,11 @@
             <label class="btn btn-secondary" for="nft">NFT</label>
         </div>
 
+        <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="premium">
+            <label class="form-check-label" for="premium">Premium</label>
+        </div>
+
         <div class="mb-3">
             <select class="form-select form-select-lg mb-3" id="from_name" name="from_name" aria-label="Large select example">
                 <option selected>Referral name</option>
@@ -89,6 +94,7 @@
         e.preventDefault()
         const types = Array.from(document.querySelectorAll('input.js-type:checked')).map(type => type.id)
         const from_name = document.querySelector('#from_name').value
+        const premium = !!(document.querySelector('#premium:checked'))
 
         if(types.length) {
 	        button.setAttribute('disabled', true)
@@ -100,7 +106,8 @@
                     body: JSON.stringify({
                         type,
                         from_name,
-                        key
+                        key,
+                        premium
                     }),
                     headers: {
                         'Accept': 'application/json',

@@ -14,6 +14,7 @@ class UserService {
 		'key',
 		'type',
 		'from_name',
+		'premium',
 	    ]
 	});
     }
