@@ -45,10 +45,10 @@
         <h1 class="h3 mb-3 fw-normal">Key Generator</h1>
 
         <div class="mb-3">
-            <input type="radio" class="btn-check" name="type" value="miner" id="miner" autocomplete="off" checked>
+            <input type="checkbox" class="btn-check js-type" value="miner" id="miner" autocomplete="off">
             <label class="btn btn-secondary" for="miner">Miner</label>
 
-            <input type="radio" class="btn-check" name="type" value="nft" id="nft" autocomplete="off">
+            <input type="checkbox" class="btn-check js-type" value="nft" id="nft" autocomplete="off">
             <label class="btn btn-secondary" for="nft">NFT</label>
         </div>
 
@@ -58,12 +58,14 @@
                 <option value="Максим">Максим</option>
                 <option value="Денис">Денис</option>
                 <option value="Костя">Костя</option>
+                <option value="Ваня">Ваня</option>
             </select>
         </div>
 
         <button class="btn btn-primary w-100 py-2" type="submit">Generate</button>
 
-        <div class="badge text-bg-light mt-3" id="key"></div>
+        <div class="badge text-bg-light mt-3" id="key-0"></div>
+        <div class="badge text-bg-light mt-3" id="key-1"></div>
     </form>
 </main>
 
@@ -81,29 +83,39 @@
     }
 
     const form = document.querySelector('form')
+    const button = document.querySelector('button')
 
     form.onsubmit = (e) => {
         e.preventDefault()
-        const type = document.querySelector('input[name="type"]:checked').value
+        const types = Array.from(document.querySelectorAll('input.js-type:checked')).map(type => type.id)
         const from_name = document.querySelector('#from_name').value
-        const key = KeyGenerate()
 
-        document.querySelector('#key').innerHTML = key
+        if(types.length) {
+	        button.setAttribute('disabled', true)
 
-        fetch('http://130.0.233.208:4444/api/users', {
-            method: 'POST',
-            body: JSON.stringify({
-                type,
-                from_name,
-                key
-            }),
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(() => {
-            form.reset()
-        })
+	        types.forEach((type, i) => {
+		        const key = KeyGenerate()
+                fetch('http://130.0.233.208:4444/api/users', {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        type,
+                        from_name,
+                        key
+                    }),
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(() => {
+                    form.reset()
+		            document.querySelector('#key-'+i).innerHTML = type+': '+key
+                })
+            })
+
+	        setTimeout(() => {
+                button.removeAttribute('disabled')
+            }, 10000)
+        }
     }
 </script>
 </body>
