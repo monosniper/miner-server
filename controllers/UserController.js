@@ -6,6 +6,7 @@ class UserController {
             const user = await UserService.getOne(req.params.key, req.params.type);
             return res.json(user);
         } catch (e) {
+            console.log(e);
             next(e);
         }
     }

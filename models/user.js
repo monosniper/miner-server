@@ -36,6 +36,10 @@ const model = User.init({
 	type: DataTypes.BOOLEAN,
 	defaultValue: false,
     },
+    isDemoExpired: {
+	type: DataTypes.BOOLEAN,
+	defaultValue: false,
+    },
     from_name: {
 	type: DataTypes.STRING(255),
     },

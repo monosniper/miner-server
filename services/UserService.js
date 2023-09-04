@@ -33,6 +33,7 @@ class UserService {
 		'balance_nft',
 		'isFirstStart',
 		'isDemo',
+		'isDemoExpired',
 	    ]
 	});
     }
