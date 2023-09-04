@@ -32,6 +32,10 @@ const model = User.init({
 	type: DataTypes.BOOLEAN,
 	defaultValue: true,
     },
+    isDemo: {
+	type: DataTypes.BOOLEAN,
+	defaultValue: false,
+    },
     from_name: {
 	type: DataTypes.STRING(255),
     },

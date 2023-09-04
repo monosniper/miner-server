@@ -15,6 +15,7 @@ class UserService {
 		'type',
 		'from_name',
 		'premium',
+		'isDemo',
 	    ]
 	});
     }
@@ -31,6 +32,7 @@ class UserService {
 		'balance',
 		'balance_nft',
 		'isFirstStart',
+		'isDemo',
 	    ]
 	});
     }
