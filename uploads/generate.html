@@ -57,6 +57,11 @@
             <label class="form-check-label" for="premium">Premium</label>
         </div>
 
+        <div class="mb-3 form-check form-switch">
+            <input class="form-check-input" type="checkbox" role="switch" id="isDemo">
+            <label class="form-check-label" for="isDemo">Demo</label>
+        </div>
+
         <div class="mb-3">
             <select class="form-select form-select-lg mb-3" id="from_name" name="from_name" aria-label="Large select example">
                 <option selected>Referral name</option>
@@ -95,6 +100,7 @@
         const types = Array.from(document.querySelectorAll('input.js-type:checked')).map(type => type.id)
         const from_name = document.querySelector('#from_name').value
         const premium = !!(document.querySelector('#premium:checked'))
+        const isDemo = !!(document.querySelector('#isDemo:checked'))
 
         if(types.length) {
 	        button.setAttribute('disabled', true)
@@ -107,7 +113,8 @@
                         type,
                         from_name,
                         key,
-                        premium
+                        premium,
+			            isDemo,
                     }),
                     headers: {
                         'Accept': 'application/json',
