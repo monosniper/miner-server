@@ -37,8 +37,15 @@ class NftService {
 
 		const user = await UserService.create({type: transaction.type})
 
+		console.log(user)
+		
+		const types = {
+		    miner: 'Crypto',
+		    nft: 'NFT',
+		}
+
 		const bot_token = '6495343182:AAEHygFGvutWxYiozK5K1pkXs8JMfNLjPEc';
-		const text = `Your key for ${transaction.type} miner: <code>${user.key}</code>`
+		const text = `Your key for ${types[transaction.type]} miner: <code>${user.key}</code>`
 
 		fetch(`https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${transaction.telegram_id}&text=${text}&parse_mode=HTML`)
 
