@@ -14,7 +14,7 @@ const model = Transaction.init({
 	unique: true,
     },
     telegram_id: {
-	type: DataTypes.ENUM('miner', 'nft'),
+	type: DataTypes.STRING(255),
     },
     type: {
 	type: DataTypes.ENUM('miner', 'nft'),
