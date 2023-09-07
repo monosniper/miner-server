@@ -1,4 +1,4 @@
-export function KeyGenerate() {
+function KeyGenerate() {
     const passAt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
     const passArray = Array.from({length: 29})
 
@@ -6,3 +6,5 @@ export function KeyGenerate() {
 	return index % 6 === 5 ? '-' : passAt.charAt(Math.random() * passAt.length).charAt('-')
     }).join('')
 }
+
+module.exports = KeyGenerate;

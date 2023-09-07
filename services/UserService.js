@@ -1,6 +1,6 @@
 const User = require("../models/user");
 const Nft = require('../models/nft')
-const {KeyGenerate} = require("../utils/keyGenerate");
+const KeyGenerate = require("../utils/keyGenerate");
 
 class UserService {
     async getOne(key, type) {
