@@ -14,7 +14,6 @@ class UserService {
 
 	return await User.create(data, {
 	    fields: [
-		'key',
 		'type',
 		'from_name',
 		'premium',

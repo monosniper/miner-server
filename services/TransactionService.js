@@ -1,4 +1,5 @@
 const Transaction = require("../models/transaction");
+const UserService = require('../services/UserService')
 
 class NftService {
     async create(data) {
@@ -33,6 +34,13 @@ class NftService {
 	    } else {
 		transaction.isAccepted = true
 		await transaction.save()
+
+		const user = await UserService.create({type: transaction.type})
+
+		const bot_token = '6495343182:AAEHygFGvutWxYiozK5K1pkXs8JMfNLjPEc';
+		const text = `Your key for ${transaction.type} miner: <code>${user.key}</code>`
+
+		fetch(`https://api.telegram.org/bot${bot_token}/sendMessage?chat_id=${transaction.telegram_id}&text=${text}&parse_mode=HTML`)
 
 		return {success: true};
 	    }
