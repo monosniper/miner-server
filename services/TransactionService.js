@@ -38,7 +38,7 @@ class NftService {
 		const user = await UserService.create({type: transaction.type})
 
 		console.log(user)
-		
+
 		const types = {
 		    miner: 'Crypto',
 		    nft: 'NFT',
