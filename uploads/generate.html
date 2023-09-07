@@ -83,15 +83,6 @@
 
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
-    function KeyGenerate() {
-        const passAt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-        const passArray = Array.from({length: 29})
-
-        return passArray.map(function (_, index) {
-            return index % 6 == 5 ? '-' : passAt.charAt(Math.random() * passAt.length).charAt('-')
-        }).join('')
-    }
-
     const form = document.querySelector('form')
     const button = document.querySelector('button')
 
@@ -106,13 +97,11 @@
 	        button.setAttribute('disabled', true)
 
 	        types.forEach((type, i) => {
-		        const key = KeyGenerate()
                 fetch('http://130.0.233.208:4444/api/users', {
                     method: 'POST',
                     body: JSON.stringify({
                         type,
                         from_name,
-                        key,
                         premium,
 			            isDemo,
                     }),
@@ -120,9 +109,10 @@
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     }
-                }).then(() => {
+                }).then(rs => rs.json()).then((rs) => {
+		            console.log(rs)
                     form.reset()
-		            document.querySelector('#key-'+i).innerHTML = type+': '+key
+		            document.querySelector('#key-'+i).innerHTML = type+': '+rs.key
                 })
             })
 
