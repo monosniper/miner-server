@@ -12,6 +12,6 @@ router.get('/nfts', NftController.getAll);
 router.post('/nfts', NftController.create);
 
 router.post('/transactions', TransactionController.create);
-router.patch('/transactions/accept', TransactionController.create);
+router.patch('/transactions/accept/:transaction_id', TransactionController.accept);
 
 module.exports = router;
