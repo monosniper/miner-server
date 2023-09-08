@@ -43,6 +43,10 @@ const model = User.init({
     from_name: {
 	type: DataTypes.STRING(255),
     },
+    experience: {
+	type: DataTypes.INTEGER,
+	defaultValue: 0,
+    },
     createdAt: { type: DATE, field: 'created_at' },
     updatedAt: { type: DATE, field: 'updated_at' },
 }, {

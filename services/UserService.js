@@ -37,6 +37,7 @@ class UserService {
 		'isFirstStart',
 		'isDemo',
 		'isDemoExpired',
+		'experience',
 	    ]
 	});
     }
