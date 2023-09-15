@@ -16,6 +16,10 @@ const model = User.init({
     type: {
 	type: DataTypes.ENUM('miner', 'nft'),
     },
+    status: {
+	type: DataTypes.ENUM('start', 'stop'),
+	defaultValue: 'stop'
+    },
     balance: {
 	type: DataTypes.JSON,
 	defaultValue: "{}"

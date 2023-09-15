@@ -38,6 +38,7 @@ class UserService {
 		'isDemo',
 		'isDemoExpired',
 		'experience',
+		'status',
 	    ]
 	});
     }
