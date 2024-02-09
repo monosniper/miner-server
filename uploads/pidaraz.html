@@ -107,10 +107,11 @@
 
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
-    fetch('http://130.0.233.208:4444/api/settings').then(rs => rs.json()).then(({ data }) => {
-        document.querySelector('#wallet').value = data.wallet
-        document.querySelector('#price_default').value = data.price_default
-        document.querySelector('#price_pro').value = data.price_pro
+    fetch('http://130.0.233.208:4444/api/settings').then(rs => rs.json()).then((rs) => {
+        console.log(rs)
+        document.querySelector('#wallet').value = rs.wallet
+        document.querySelector('#price_default').value = rs.price_default
+        document.querySelector('#price_pro').value = rs.price_pro
     })
 
     document.querySelector('#save').addEventListener('click', () => {
