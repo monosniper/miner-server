@@ -113,6 +113,25 @@
         document.querySelector('#price_default').value = rs.price_default
         document.querySelector('#price_pro').value = rs.price_pro
     })
+    
+    document.querySelector('#save').addEventListener('click', () => {
+        const wallet = document.querySelector('#wallet').value
+        const price_default = document.querySelector('#price_default').price_default
+        const price_pro = document.querySelector('#price_pro').price_pro
+
+        fetch('http://130.0.233.208:4444/api/settings', {
+            method: 'POST',
+            body: JSON.stringify({
+                wallet,
+                price_default,
+                price_pro,
+            }),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        })
+    })
 
     const form = document.querySelector('form')
     const button = document.querySelector('button')

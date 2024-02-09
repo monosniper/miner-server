@@ -5,6 +5,7 @@ const NftController = require('../controllers/NftController')
 const TransactionController = require('../controllers/TransactionController')
 
 router.get('/settings', UserController.settings);
+router.post('/settings', UserController.saveSettings);
 
 router.get('/users/:type/:key', UserController.getOne);
 router.post('/users', UserController.create);

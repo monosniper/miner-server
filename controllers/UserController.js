@@ -46,6 +46,16 @@ class UserController {
             next(e);
         }
     }
+
+    async saveSettings(req, res,next) {
+        try {
+            await UserService.saveSettings(req.body)
+
+            return res.json('ok');
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 module.exports = new UserController();

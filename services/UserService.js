@@ -16,6 +16,12 @@ class UserService {
 		return Setting.findAll();
 	}
 
+	async saveSettings(data) {
+		Object.entries(data).forEach(({key, value}) => {
+			Setting.update({value}, { where: {key} })
+		})
+	}
+
     async create(data) {
         data.key = KeyGenerate()
 
