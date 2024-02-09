@@ -30,6 +30,22 @@ class UserController {
             next(e);
         }
     }
+
+    async settings(req, res,next) {
+        try {
+            const settings = await UserService.getSettings()
+
+            const data = []
+
+            settings.forEach(({key, value}) => {
+                data.push({[key]: value})
+            })
+
+            return res.json({data});
+        } catch (e) {
+            next(e);
+        }
+    }
 }
 
 module.exports = new UserController();

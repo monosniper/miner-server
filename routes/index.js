@@ -4,6 +4,8 @@ const UserController = require('../controllers/UserController')
 const NftController = require('../controllers/NftController')
 const TransactionController = require('../controllers/TransactionController')
 
+router.get('/settings', UserController.settings);
+
 router.get('/users/:type/:key', UserController.getOne);
 router.post('/users', UserController.create);
 router.patch('/users/:id', UserController.update);
