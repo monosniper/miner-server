@@ -19,7 +19,7 @@ class UserService {
 
 	async saveSettings(data) {
 		Object.entries(data).forEach(async ([key, value]) => {
-			const setting = Setting.findOne({where: {key}})
+			const setting = await Setting.findOne({where: {key}})
 			if(setting !== null) {
 				await Setting.update({value}, {where: {key}})
 			} else {
