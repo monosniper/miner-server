@@ -24,7 +24,7 @@ class UserService {
 				setting.value = value
 				await setting.save()
 			} else {
-				Setting.create({key, value})
+				await Setting.create({key, value})
 			}
 		})
 	}
