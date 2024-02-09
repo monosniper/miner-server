@@ -41,7 +41,7 @@ class UserController {
                 data[key] = value
             })
 
-            return res.json({data});
+            return res.json(data);
         } catch (e) {
             next(e);
         }
