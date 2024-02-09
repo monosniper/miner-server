@@ -21,8 +21,7 @@ class UserService {
 		Object.entries(data).forEach(({key, value}) => {
 			const setting = Setting.findOne({key})
 			if(setting) {
-				setting.value = value
-				setting.save()
+				setting.update({value})
 			} else {
 				Setting.create({key, value})
 			}
