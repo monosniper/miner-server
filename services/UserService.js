@@ -2,6 +2,7 @@ const User = require("../models/user");
 const Setting = require("../models/setting");
 const Nft = require('../models/nft')
 const KeyGenerate = require("../utils/keyGenerate");
+const {set} = require("express/lib/application");
 
 class UserService {
     async getOne(key, type) {
@@ -18,7 +19,13 @@ class UserService {
 
 	async saveSettings(data) {
 		Object.entries(data).forEach(({key, value}) => {
-			Setting.update({value}, { where: {key} })
+			const setting = Setting.findOne({key})
+			if(setting) {
+				setting.value = value
+				setting.save()
+			} else {
+				Setting.create({key, value})
+			}
 		})
 	}
 
