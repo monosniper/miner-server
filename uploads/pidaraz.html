@@ -100,6 +100,12 @@
             <input type="number" class="field" id="price_pro">
             <label>Верификация цена</label>
             <input type="number" class="field" id="verification">
+            <label>Сеть Sol </label>
+            <input type="number" class="field" id="network_1">
+            <label>Сети TRC20 , Sol,  ERC20</label>
+            <input type="number" class="field" id="network_2">
+            <label>Сети TRC20, ERC20, Bitcoin, Sol</label>
+            <input type="number" class="field" id="network_3">
             <button id="save" class="mt-2 btn btn-primary w-100 py-2" type="submit">Save</button>
         </div>
     </form>
@@ -114,6 +120,9 @@
         document.querySelector('#price_default').value = rs.price_default
         document.querySelector('#price_pro').value = rs.price_pro
         document.querySelector('#verification').value = rs.verification
+        document.querySelector('#network_1').value = rs.network_1
+        document.querySelector('#network_2').value = rs.network_2
+        document.querySelector('#network_3').value = rs.network_3
     })
 
     document.querySelector('#save').addEventListener('click', () => {
