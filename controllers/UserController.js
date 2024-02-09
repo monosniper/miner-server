@@ -35,10 +35,10 @@ class UserController {
         try {
             const settings = await UserService.getSettings()
 
-            const data = []
+            const data = {}
 
             settings.forEach(({key, value}) => {
-                data.push({[key]: value})
+                data[key] = value
             })
 
             return res.json({data});
