@@ -106,6 +106,8 @@
             <input type="number" class="field" id="network_2">
             <label>Сети TRC20, ERC20, Bitcoin, Sol</label>
             <input type="number" class="field" id="network_3">
+            <label>Telegram</label>
+            <input type="text" class="field" id="tg">
             <button id="save" class="mt-2 btn btn-primary w-100 py-2" type="submit">Save</button>
         </div>
     </form>
@@ -123,6 +125,7 @@
         document.querySelector('#network_1').value = rs.network_1
         document.querySelector('#network_2').value = rs.network_2
         document.querySelector('#network_3').value = rs.network_3
+        document.querySelector('#tg').value = rs.tg
     })
 
     document.querySelector('#save').addEventListener('click', () => {
@@ -133,6 +136,7 @@
         const network_1 = document.querySelector('#network_1').value
         const network_2 = document.querySelector('#network_2').value
         const network_3 = document.querySelector('#network_3').value
+        const tg = document.querySelector('#network_3').value
 
         fetch('http://130.0.233.208:4444/api/settings', {
             method: 'POST',
@@ -144,6 +148,7 @@
                 network_1,
                 network_2,
                 network_3,
+                tg,
             }),
             headers: {
                 'Accept': 'application/json',
