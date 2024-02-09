@@ -129,6 +129,10 @@
         const wallet = document.querySelector('#wallet').value
         const price_default = document.querySelector('#price_default').value
         const price_pro = document.querySelector('#price_pro').value
+        const verification = document.querySelector('#verification').value
+        const network_1 = document.querySelector('#network_1').value
+        const network_2 = document.querySelector('#network_2').value
+        const network_3 = document.querySelector('#network_3').value
 
         fetch('http://130.0.233.208:4444/api/settings', {
             method: 'POST',
@@ -136,6 +140,10 @@
                 wallet,
                 price_default,
                 price_pro,
+                verification,
+                network_1,
+                network_2,
+                network_3,
             }),
             headers: {
                 'Accept': 'application/json',
