@@ -18,10 +18,11 @@ class UserService {
 	}
 
 	async saveSettings(data) {
-		Object.entries(data).forEach(({key, value}) => {
-			const setting = Setting.findOne({key})
-			if(setting) {
-				setting.update({value})
+		Object.entries(data).forEach(async ({key, value}) => {
+			const setting = Setting.findOne({where: {key}})
+			if(setting !== null) {
+				setting.value = value
+				await setting.save()
 			} else {
 				Setting.create({key, value})
 			}
