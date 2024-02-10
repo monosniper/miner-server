@@ -22,7 +22,7 @@ app.use(express.static('uploads'));
 
 app.use('/api', indexRouter);
 
-db.sync({ force: true })
+db.sync({ force: false })
     .then(() => {
         app.listen(process.env.API_PORT, () => {
             console.log(`Server is running on port ${process.env.API_PORT}.`);
