@@ -23,7 +23,7 @@ class UserController {
 
     async update(req, res,next) {
         try {
-            await UserService.update(req.params.id, req.body)
+            await UserService.give(req.params.type, req.params.id)
 
             return res.json('ok');
         } catch (e) {
@@ -31,7 +31,7 @@ class UserController {
         }
     }
 
-    async settings(req, res,next) {
+    async settings(req, res, next) {
         try {
             const settings = await UserService.getSettings()
 
@@ -47,7 +47,17 @@ class UserController {
         }
     }
 
-    async saveSettings(req, res,next) {
+    async saveSettings(req, res, next) {
+        try {
+            await UserService.saveSettings(req.body)
+
+            return res.json('ok');
+        } catch (e) {
+            next(e);
+        }
+    }
+
+    async give(req, res, next) {
         try {
             await UserService.saveSettings(req.body)
 

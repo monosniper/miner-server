@@ -42,6 +42,33 @@ class UserService {
         });
     }
 
+    async give(type, id) {
+        const types = {
+            'network': 'isNetwork',
+            'pro': 'premium',
+            'default': 'isDemo',
+        }
+
+        let data = {}
+
+        if(type === 'default') {
+            data['isNetwork'] = false
+            data['premium'] = false
+            data['isDemo'] = false
+        } else {
+            data[types[type]] = true
+        }
+
+        return await User.update(data, {
+            where: {id},
+            fields: [
+                'premium',
+                'isDemo',
+                'isNetwork',
+            ]
+        });
+    }
+
     async update(id, data) {
         if (data.nfts) {
             const user = await User.findOne({where: {id}})
@@ -58,6 +85,7 @@ class UserService {
                 'isDemoExpired',
                 'experience',
                 'status',
+                'isNetwork',
             ]
         });
     }

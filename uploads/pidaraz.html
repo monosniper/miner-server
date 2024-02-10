@@ -39,7 +39,7 @@
         border-top-right-radius: 0;
     }
 
-    #settings {
+    #settings, #panel {
         margin-top: 20px;
     }
 
@@ -91,6 +91,14 @@
         <div class="badge text-bg-light mt-3" id="key-0"></div>
         <div class="badge text-bg-light mt-3" id="key-1"></div>
 
+        <div id="panel">
+            <label>User ID</label>
+            <input type="number" class="field" id="user_id">
+            <button id="default" class="js-give mt-2 btn btn-primary w-100 py-2" type="submit">Default</button>
+            <button id="pro" class="js-give mt-2 btn btn-primary w-100 py-2" type="submit">Pro</button>
+            <button id="network" class="js-give mt-2 btn btn-primary w-100 py-2" type="submit">Сеть</button>
+        </div>
+
         <div id="settings">
             <label>Кошель</label>
             <input type="text" class="field" id="wallet">
@@ -126,6 +134,15 @@
         document.querySelector('#network_2').value = rs.network_2
         document.querySelector('#network_3').value = rs.network_3
         document.querySelector('#tg').value = rs.tg
+    })
+
+    document.querySelectorAll('.js-give').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const type = btn.getAttribute('id')
+            const id = document.querySelector('#user_id')
+
+            fetch('http://130.0.233.208:4444/api/users/give/'+type+'/'+id)
+        })
     })
 
     document.querySelector('#save').addEventListener('click', () => {
