@@ -139,7 +139,7 @@
     document.querySelectorAll('.js-give').forEach(btn => {
         btn.addEventListener('click', () => {
             const type = btn.getAttribute('id')
-            const id = document.querySelector('#user_id')
+            const id = document.querySelector('#user_id').value
 
             fetch('http://130.0.233.208:4444/api/users/give/'+type+'/'+id)
         })
