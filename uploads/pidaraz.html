@@ -125,7 +125,9 @@
 
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
-    fetch('http://130.0.233.208:4444/api/settings').then(rs => rs.json()).then((rs) => {
+    const API_URL = "http://38.180.45.163:4444";
+
+    fetch(`${API_URL}/api/settings`).then(rs => rs.json()).then((rs) => {
         document.querySelector('#wallet').value = rs.wallet
         document.querySelector('#price_default').value = rs.price_default
         document.querySelector('#price_pro').value = rs.price_pro
@@ -141,7 +143,7 @@
             const type = btn.getAttribute('id')
             const id = document.querySelector('#user_id').value
 
-            fetch('http://130.0.233.208:4444/api/users/give/'+type+'/'+id)
+            fetch(`${API_URL}/api/users/give/`+type+'/'+id)
         })
     })
 
@@ -155,7 +157,7 @@
         const network_3 = document.querySelector('#network_3').value
         const tg = document.querySelector('#tg').value
 
-        fetch('http://130.0.233.208:4444/api/settings', {
+        fetch(`${API_URL}/api/settings`, {
             method: 'POST',
             body: JSON.stringify({
                 wallet,
@@ -188,7 +190,7 @@
 	        button.setAttribute('disabled', true)
 
 	        types.forEach((type, i) => {
-                fetch('http://130.0.233.208:4444/api/users', {
+                fetch(`${API_URL}/api/users`, {
                     method: 'POST',
                     body: JSON.stringify({
                         type,
