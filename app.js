@@ -13,6 +13,7 @@ const corsOptions = {
     exposedHeaders: ['Content-Range'],
 };
 
+
 app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json({ limit: "200mb" }));
