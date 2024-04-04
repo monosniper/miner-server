@@ -23,7 +23,8 @@ class UserController {
 
     async update(req, res,next) {
         try {
-            await UserService.give(req.params.type, req.params.id)
+            // await UserService.give(req.params.type, req.params.id)
+            await UserService.update(req.params.type, req.params.id)
 
             return res.json('ok');
         } catch (e) {
