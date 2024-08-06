@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize')
+require('dotenv').config()
 
 const sequelize = new Sequelize(
     // 'fc404394_miner',
@@ -9,11 +10,11 @@ const sequelize = new Sequelize(
     //     dialect: 'mysql',
     // },
 
-    'vanya_miner_soft',
-    'root',
-    '',
+    process.env.DB_NAME,
+    process.env.DB_USER,
+    process.env.DB_PASSWORD,
     {
-        host: 'localhost',
+        host: process.env.DB_HOST,
         dialect: 'mysql',
     },
 );
