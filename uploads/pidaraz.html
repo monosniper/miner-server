@@ -125,7 +125,8 @@
 
 <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
-    const API_URL = "http://38.180.45.163:4444";
+    // const API_URL = "http://38.180.45.163:4444";
+    const API_URL = "http://127.0.0.1:4444";
 
     fetch(`${API_URL}/api/settings`).then(rs => rs.json()).then((rs) => {
         document.querySelector('#wallet').value = rs.wallet
